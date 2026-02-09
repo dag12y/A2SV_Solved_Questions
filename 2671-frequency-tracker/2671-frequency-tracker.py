@@ -1,9 +1,8 @@
 class FrequencyTracker:
 
     def __init__(self):
-        self.count = {}  # number -> frequency
-        self.freq = {}   # frequency -> how many numbers have this frequency
-
+        self.count = {}  
+        self.freq = {}  
     def add(self, number: int) -> None:
         prev = self.count.get(number, 0)
         nxt = prev + 1
