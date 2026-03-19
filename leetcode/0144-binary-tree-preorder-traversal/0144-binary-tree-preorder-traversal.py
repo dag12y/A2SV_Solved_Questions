@@ -10,22 +10,17 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[int]
         """
-        # parent, explore left, explore right
-
-        # order = [1, 2, 4, 5, 6, 7, 3, 8, 9]
-        order = []
-
-        # append current root to order
-        # explore left subtree
-        # explore right subtree
-
-        def dfs(node):
-            if not node:
-                return
-            order.append(node.val)
-            dfs(node.left)
-            dfs(node.right)
+        if not root:
+            return []
         
-        dfs(root)
+        stack = [root]
+        res = []
+        while stack:
+            node = stack.pop()
+            res.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return res
 
-        return order
