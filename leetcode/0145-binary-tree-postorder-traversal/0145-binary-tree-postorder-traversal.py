@@ -17,7 +17,6 @@ class Solution(object):
                 return
             
             dfs(node.left)
-            
             dfs(node.right)
             res.append(node.val)
             
