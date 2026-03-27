@@ -5,18 +5,21 @@
 #         self.next = next
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        stack = []
+        def reverse(head):
+            prev,curr = None,head
+            while curr:
+                temp = curr.next
+                curr.next = prev
+                prev,curr = curr,temp
+            return prev
+
+        head = reverse(head)
         curr = head
-
-        while curr:
-            while stack and curr.val > stack[-1]:
-                stack.pop()
-            stack.append(curr.val)
-            curr = curr.next
-
-        dummy = ListNode()
-        curr = dummy
-        for n in stack:
-            curr.next = ListNode(n)
-            curr = curr.next
-        return dummy.next
+        curr_max = curr.val
+        while curr.next:
+            if curr.next.val < curr_max:
+                curr.next = curr.next.next
+            else:
+                curr_max = curr.next.val
+                curr = curr.next
+        return reverse(head)
