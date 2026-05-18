@@ -1,5 +1,5 @@
 class Solution:
-    def findErrorNums(self, nums):
+    def findErrorNums(self, nums: List[int]) -> List[int]:
         seen = set()
         duplicate = -1
         
